@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="GitPage,Hexo,">
 
 
 
@@ -94,13 +94,26 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="26186个人博客">
-<meta property="og:url" content="https://github.com/26186/index.html">
+<meta name="description" content="准备环境注册GitHub安装Git安装GitHub Desktop安装Node.js  本文涉及到的命令都使用Git Bash操作  本地创建SSH并配置GitHub验证本地是否存在SSH，没有则创建。1$ cd ~/.ssh   目录不存在说明没有SSH  创建SSH1$ ssh-keygen -t rsa -C &quot;xxxxxx@qq.com&quot;   不需要设置文件目录和密码，直接三个回车。xxx">
+<meta name="keywords" content="GitPage,Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitPage+Hexo搭建个人博客">
+<meta property="og:url" content="https://github.com/26186/2017/05/26/HexoGitPage/index.html">
 <meta property="og:site_name" content="26186个人博客">
+<meta property="og:description" content="准备环境注册GitHub安装Git安装GitHub Desktop安装Node.js  本文涉及到的命令都使用Git Bash操作  本地创建SSH并配置GitHub验证本地是否存在SSH，没有则创建。1$ cd ~/.ssh   目录不存在说明没有SSH  创建SSH1$ ssh-keygen -t rsa -C &quot;xxxxxx@qq.com&quot;   不需要设置文件目录和密码，直接三个回车。xxx">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/images/pasted-0.png">
+<meta property="og:image" content="https://github.com/images/pasted-2.png">
+<meta property="og:image" content="https://github.com/images/pasted-1.png">
+<meta property="og:image" content="https://github.com/images/pasted-3.png">
+<meta property="og:image" content="https://github.com/images/pasted-4.png">
+<meta property="og:image" content="https://github.com/images/pasted-5.png">
+<meta property="og:image" content="https://github.com/images/pasted-6.png">
+<meta property="og:updated_time" content="2019-07-24T07:30:47.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="26186个人博客">
+<meta name="twitter:title" content="GitPage+Hexo搭建个人博客">
+<meta name="twitter:description" content="准备环境注册GitHub安装Git安装GitHub Desktop安装Node.js  本文涉及到的命令都使用Git Bash操作  本地创建SSH并配置GitHub验证本地是否存在SSH，没有则创建。1$ cd ~/.ssh   目录不存在说明没有SSH  创建SSH1$ ssh-keygen -t rsa -C &quot;xxxxxx@qq.com&quot;   不需要设置文件目录和密码，直接三个回车。xxx">
+<meta name="twitter:image" content="https://github.com/images/pasted-0.png">
 
 
 
@@ -130,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/26186/">
+  <link rel="canonical" href="https://github.com/26186/2017/05/26/HexoGitPage/">
 
 
 
 
 
-  <title>26186个人博客</title>
+  <title>GitPage+Hexo搭建个人博客 | 26186个人博客</title>
   
 
 
@@ -155,8 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -259,9 +271,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -291,9 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/26/HexoGitPage/" itemprop="url">GitPage+Hexo搭建个人博客</a></h1>
+          <h1 class="post-title" itemprop="name headline">GitPage+Hexo搭建个人博客</h1>
         
 
         <div class="post-meta">
@@ -351,6 +361,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> �Ķ�����
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>��
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -400,9 +415,7 @@
       
 
       
-        
-          
-            <h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><p><a href="https://github.com/">注册GitHub</a><br><a href="https://gitforwindows.org/" target="_blank" rel="noopener">安装Git</a><br><a href="https://desktop.github.com/" target="_blank" rel="noopener">安装GitHub Desktop</a><br><a href="https://nodejs.org/en/" target="_blank" rel="noopener">安装Node.js</a></p>
+        <h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><p><a href="https://github.com/">注册GitHub</a><br><a href="https://gitforwindows.org/" target="_blank" rel="noopener">安装Git</a><br><a href="https://desktop.github.com/" target="_blank" rel="noopener">安装GitHub Desktop</a><br><a href="https://nodejs.org/en/" target="_blank" rel="noopener">安装Node.js</a></p>
 <blockquote>
 <p>本文涉及到的命令都使用Git Bash操作</p>
 </blockquote>
@@ -482,14 +495,28 @@
 <p>管理地址：<a href="http://localhost:4000/admin/#/" target="_blank" rel="noopener">http://localhost:4000/admin/#/</a><br>友好支持MarkDown语法，此篇文章使用hexo-admin写作完成。<br>图片直接复制粘贴，windows用户注意图片路劲<code>\</code>改成<code>/</code>。<br>推荐几个MarkDown语在线编辑器 <a href="https://pandao.github.io/editor.md/" target="_blank" rel="noopener">editor.md</a> <a href="https://dillinger.io/" target="_blank" rel="noopener">dillinger</a> <a href="https://www.mdeditor.com/" target="_blank" rel="noopener">mdeditor</a></p>
 </blockquote>
 
-          
-        
       
     </div>
     
     
     
 	<div>
+      
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    26186
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href title></a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
       
 	</div>
 
@@ -500,18 +527,43 @@
     
 	<div>
 		
+		
+		
 	</div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/GitPage/" rel="tag"><i class="fa fa-tag"></i> GitPage</a>
+          
+            <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -521,10 +573,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -532,6 +585,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -552,8 +609,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -623,6 +689,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备环境"><span class="nav-number">1.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地创建SSH并配置GitHub"><span class="nav-number">2.</span> <span class="nav-text">本地创建SSH并配置GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证本地是否存在SSH，没有则创建。"><span class="nav-number">2.1.</span> <span class="nav-text">验证本地是否存在SSH，没有则创建。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建SSH"><span class="nav-number">2.2.</span> <span class="nav-text">创建SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看拷贝SSH"><span class="nav-number">2.3.</span> <span class="nav-text">查看拷贝SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GitHub上配置SSH"><span class="nav-number">2.4.</span> <span class="nav-text">GitHub上配置SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证SSH"><span class="nav-number">2.5.</span> <span class="nav-text">验证SSH</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub博客仓库"><span class="nav-number">3.</span> <span class="nav-text">GitHub博客仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建GitPage仓库账号-github-io"><span class="nav-number">3.1.</span> <span class="nav-text">创建GitPage仓库账号.github.io</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Code分支存放博客原文件"><span class="nav-number">3.2.</span> <span class="nav-text">创建Code分支存放博客原文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Hexo模板博客"><span class="nav-number">4.</span> <span class="nav-text">创建Hexo模板博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动Hexo服务"><span class="nav-number">4.2.</span> <span class="nav-text">启动Hexo服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo生成的博客页面提交到master分支仓库"><span class="nav-number">4.3.</span> <span class="nav-text">Hexo生成的博客页面提交到master分支仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地Code分支仓库提交"><span class="nav-number">4.4.</span> <span class="nav-text">本地Code分支仓库提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建博客管理后台环境"><span class="nav-number">5.</span> <span class="nav-text">搭建博客管理后台环境</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -799,6 +881,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
