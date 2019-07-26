@@ -274,6 +274,440 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/26186/2019/07/26/js-this/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="26186">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="26186个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/26/js-this/" itemprop="url">JS中this的理解</a></h1>
+        
+
+        <div class="post-meta">
+			
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于&#58;</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-26T14:52:00+08:00">
+                2019-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+		  
+		  
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                               
+                <span class="post-meta-item-text">分类于&#58;</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  831字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><p>开篇给结论：在 ES5 中 this 永远指向的是最后调用它的那个对象。<br>先给出一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = obj.func</span><br><span class="line">bar() <span class="comment">// 打印出window</span></span><br><span class="line">obj.func() <span class="comment">// 打印出obj</span></span><br></pre></td></tr></table></figure>
+
+<p>最后两行打印出来的结果为什么完全不一样，其实函数调用的本质是 call。</p>
+<h4 id="函数调用的本质"><a href="#函数调用的本质" class="headerlink" title="函数调用的本质"></a>函数调用的本质</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func.call(context)</span><br></pre></td></tr></table></figure>
+
+<p><code>context</code>就是函数调用时的执行上下文（即所在作用域）。谁调用它谁就是它的<code>context</code>，如果 context 是 null 或者是 undefined，context 就是 window。<br><code>bar()</code>等价于<strong>bar.call(undefined)</strong>，为了更好的理解我们先看成是<strong>window.bar.call(window)</strong><br><code>obj.func()</code>等价于<strong>obj.func.call(obj)</strong></p>
+<blockquote>
+<p>综上所述可以粗暴的理解成谁<code>.</code>的它谁就是它的 this。</p>
+</blockquote>
+<h3 id="如何改变this指向"><a href="#如何改变this指向" class="headerlink" title="如何改变this指向"></a>如何改变this指向</h3><h4 id="this-this"><a href="#this-this" class="headerlink" title="_this = this"></a>_this = this</h4><p>在一些回调地狱中，最直接的办法就是提前存储 this。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出window</span></span><br><span class="line">      <span class="built_in">console</span>.log(_this) <span class="comment">// 打印出callHell</span></span><br><span class="line">    &#125;</span><br><span class="line">    callback()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>结合之前的结论谁<code>.</code>的它谁就是它的this。<br><code>callback()</code>等价于<code>window.callback.call(window)</code>，所以<code>console.log(this)</code>打印出window。<br><code>callHell.func()</code>等价于<code>callHell.func.call(callHell)</code>，所以<code>var _this = this</code>的值为callHell，打印出callHell。<br>如果对<code>window.callback.call(window)</code>不太理解，其实原因很简单就是js中的var变量提升，可以看下面等价代码：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callBack = <span class="function"><span class="keyword">function</span>(<span class="params">_this</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出window</span></span><br><span class="line">  <span class="built_in">console</span>.log(_this) <span class="comment">// 打印出callHell</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func(callback) &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span> </span><br><span class="line">    callback(_this)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func(callBack)</span><br></pre></td></tr></table></figure>
+
+<h4 id="call、apply、bind"><a href="#call、apply、bind" class="headerlink" title="call、apply、bind"></a>call、apply、bind</h4><p>前面一直在说函数的调用本质就是<code>func.call(context)</code>。所以自然可以使用 call 来改变 this 指向。apply、bind 和 call 是类似的。这三个区别可以自己查的了解下。<br>改造开篇第一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callObj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = obj.func</span><br><span class="line">bar() <span class="comment">// 打印出window</span></span><br><span class="line">bar.call(obj) <span class="comment">// 打印出obj</span></span><br><span class="line">bar.apply(obj) <span class="comment">// 打印出obj</span></span><br><span class="line">bar.bind(obj)() <span class="comment">// 打印出obj</span></span><br><span class="line">obj.func() <span class="comment">// 打印出obj</span></span><br><span class="line">obj.func.call(callObj) <span class="comment">// 打印出callObj</span></span><br><span class="line">obj.func.apply(callObj) <span class="comment">// 打印出callObj</span></span><br><span class="line">obj.func.bind(callObj)() <span class="comment">// 打印出callObj</span></span><br></pre></td></tr></table></figure>
+
+<p>####<br><img src="%5Cimages%5Cpasted-8.png%5C" alt="upload successful">箭头函数<br>先上结论：箭头函数没有 this 绑定，通过查找作用域链来决定 this 指向，如果箭头函数被非箭头函数包含，则 this 指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined 时指向 window。</p>
+<blockquote>
+<p>ES5 的坑终于在 ES6 中得到解救。</p>
+</blockquote>
+<p>改造万恶的回调地狱：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    <span class="keyword">var</span> callback = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出callHell</span></span><br><span class="line">    &#125;</span><br><span class="line">    callback()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func()</span><br></pre></td></tr></table></figure>
+
+<p>改造开篇第一个例子成 this 为 undefined情况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func() <span class="comment">// 打印出window</span></span><br></pre></td></tr></table></figure>
+
+<p>结束时结论说三遍：</p>
+<blockquote>
+<p>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。<br>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。<br>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	<div>
+      
+	</div>
+
+    
+
+    
+
+    
+	<div>
+		
+	</div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/26186/2019/07/26/js-this - 副本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="26186">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="26186个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/26/js-this - 副本/" itemprop="url">JS中this的理解</a></h1>
+        
+
+        <div class="post-meta">
+			
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于&#58;</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-26T14:52:00+08:00">
+                2019-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+		  
+		  
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                               
+                <span class="post-meta-item-text">分类于&#58;</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  831字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><p>开篇给结论：在 ES5 中 this 永远指向的是最后调用它的那个对象。<br>先给出一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = obj.func</span><br><span class="line">bar() <span class="comment">// 打印出window</span></span><br><span class="line">obj.func() <span class="comment">// 打印出obj</span></span><br></pre></td></tr></table></figure>
+
+<p>最后两行打印出来的结果为什么完全不一样，其实函数调用的本质是 call。</p>
+<h4 id="函数调用的本质"><a href="#函数调用的本质" class="headerlink" title="函数调用的本质"></a>函数调用的本质</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func.call(context)</span><br></pre></td></tr></table></figure>
+
+<p><code>context</code>就是函数调用时的执行上下文（即所在作用域）。谁调用它谁就是它的<code>context</code>，如果 context 是 null 或者是 undefined，context 就是 window。<br><code>bar()</code>等价于<strong>bar.call(undefined)</strong>，为了更好的理解我们先看成是<strong>window.bar.call(window)</strong><br><code>obj.func()</code>等价于<strong>obj.func.call(obj)</strong></p>
+<blockquote>
+<p>综上所述可以粗暴的理解成谁<code>.</code>的它谁就是它的 this。</p>
+</blockquote>
+<h3 id="如何改变this指向"><a href="#如何改变this指向" class="headerlink" title="如何改变this指向"></a>如何改变this指向</h3><h4 id="this-this"><a href="#this-this" class="headerlink" title="_this = this"></a>_this = this</h4><p>在一些回调地狱中，最直接的办法就是提前存储 this。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出window</span></span><br><span class="line">      <span class="built_in">console</span>.log(_this) <span class="comment">// 打印出callHell</span></span><br><span class="line">    &#125;</span><br><span class="line">    callback()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>结合之前的结论谁<code>.</code>的它谁就是它的this。<br><code>callback()</code>等价于<code>window.callback.call(window)</code>，所以<code>console.log(this)</code>打印出window。<br><code>callHell.func()</code>等价于<code>callHell.func.call(callHell)</code>，所以<code>var _this = this</code>的值为callHell，打印出callHell。<br>如果对<code>window.callback.call(window)</code>不太理解，其实原因很简单就是js中的var变量提升，可以看下面等价代码：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callBack = <span class="function"><span class="keyword">function</span>(<span class="params">_this</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出window</span></span><br><span class="line">  <span class="built_in">console</span>.log(_this) <span class="comment">// 打印出callHell</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func(callback) &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span> </span><br><span class="line">    callback(_this)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func(callBack)</span><br></pre></td></tr></table></figure>
+
+<h4 id="call、apply、bind"><a href="#call、apply、bind" class="headerlink" title="call、apply、bind"></a>call、apply、bind</h4><p>前面一直在说函数的调用本质就是<code>func.call(context)</code>。所以自然可以使用 call 来改变 this 指向。apply、bind 和 call 是类似的。这三个区别可以自己查的了解下。<br>改造开篇第一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callObj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = obj.func</span><br><span class="line">bar() <span class="comment">// 打印出window</span></span><br><span class="line">bar.call(obj) <span class="comment">// 打印出obj</span></span><br><span class="line">bar.apply(obj) <span class="comment">// 打印出obj</span></span><br><span class="line">bar.bind(obj)() <span class="comment">// 打印出obj</span></span><br><span class="line">obj.func() <span class="comment">// 打印出obj</span></span><br><span class="line">obj.func.call(callObj) <span class="comment">// 打印出callObj</span></span><br><span class="line">obj.func.apply(callObj) <span class="comment">// 打印出callObj</span></span><br><span class="line">obj.func.bind(callObj)() <span class="comment">// 打印出callObj</span></span><br></pre></td></tr></table></figure>
+
+<p>####<br><img src="%5Cimages%5Cpasted-8.png%5C" alt="upload successful">箭头函数<br>先上结论：箭头函数没有 this 绑定，通过查找作用域链来决定 this 指向，如果箭头函数被非箭头函数包含，则 this 指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined 时指向 window。</p>
+<blockquote>
+<p>ES5 的坑终于在 ES6 中得到解救。</p>
+</blockquote>
+<p>改造万恶的回调地狱：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    <span class="keyword">var</span> callback = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出callHell</span></span><br><span class="line">    &#125;</span><br><span class="line">    callback()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func()</span><br></pre></td></tr></table></figure>
+
+<p>改造开篇第一个例子成 this 为 undefined情况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func() <span class="comment">// 打印出window</span></span><br></pre></td></tr></table></figure>
+
+<p>结束时结论说三遍：</p>
+<blockquote>
+<p>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。<br>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。<br>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	<div>
+      
+	</div>
+
+    
+
+    
+
+    
+	<div>
+		
+	</div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/26186/2019/07/24/HexoGitPage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -568,7 +1002,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +1013,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -590,7 +1024,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -651,7 +1085,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">666</span>
+    <span title="Site words total count">2.3k</span>
   
 </div>
 

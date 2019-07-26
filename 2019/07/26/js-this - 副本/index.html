@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="GitPage,Hexo,">
+  <meta name="keywords" content="JavaScript,前端,">
 
 
 
@@ -94,26 +94,20 @@
 
 
 
-<meta name="description" content="准备环境注册GitHub安装Git安装GitHub Desktop安装Node.js  本文涉及到的命令都使用Git Bash操作  本地创建SSH并配置GitHub验证本地是否存在SSH，没有则创建。1$ cd ~/.ssh   目录不存在说明没有SSH  创建SSH1$ ssh-keygen -t rsa -C &quot;xxxxxx@qq.com&quot;   不需要设置文件目录和密码，直接三个回车。xxx">
-<meta name="keywords" content="GitPage,Hexo">
+<meta name="description" content="this指向开篇给结论：在 ES5 中 this 永远指向的是最后调用它的那个对象。先给出一个简单的例子： 12345678var obj = &amp;#123;  func () &amp;#123;    console.log(this)  &amp;#125;&amp;#125;var bar = obj.funcbar() // 打印出windowobj.func() // 打印出obj  最后两行打印出来的结果为什">
+<meta name="keywords" content="JavaScript,前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitPage+Hexo搭建个人博客">
-<meta property="og:url" content="https://github.com/26186/2019/07/24/HexoGitPage/index.html">
+<meta property="og:title" content="JS中this的理解">
+<meta property="og:url" content="https://github.com/26186/2019/07/26/js-this - 副本/index.html">
 <meta property="og:site_name" content="26186个人博客">
-<meta property="og:description" content="准备环境注册GitHub安装Git安装GitHub Desktop安装Node.js  本文涉及到的命令都使用Git Bash操作  本地创建SSH并配置GitHub验证本地是否存在SSH，没有则创建。1$ cd ~/.ssh   目录不存在说明没有SSH  创建SSH1$ ssh-keygen -t rsa -C &quot;xxxxxx@qq.com&quot;   不需要设置文件目录和密码，直接三个回车。xxx">
+<meta property="og:description" content="this指向开篇给结论：在 ES5 中 this 永远指向的是最后调用它的那个对象。先给出一个简单的例子： 12345678var obj = &amp;#123;  func () &amp;#123;    console.log(this)  &amp;#125;&amp;#125;var bar = obj.funcbar() // 打印出windowobj.func() // 打印出obj  最后两行打印出来的结果为什">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/images/pasted-0.png">
-<meta property="og:image" content="https://github.com/images/pasted-2.png">
-<meta property="og:image" content="https://github.com/images/pasted-1.png">
-<meta property="og:image" content="https://github.com/images/pasted-3.png">
-<meta property="og:image" content="https://github.com/images/pasted-4.png">
-<meta property="og:image" content="https://github.com/images/pasted-5.png">
-<meta property="og:image" content="https://github.com/images/pasted-6.png">
-<meta property="og:updated_time" content="2019-07-24T08:06:10.071Z">
+<meta property="og:image" content="https://github.com/26186/2019/07/26/js-this%20-%20副本/%5Cimages%5Cpasted-8.png%5C">
+<meta property="og:updated_time" content="2019-07-26T09:28:09.096Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitPage+Hexo搭建个人博客">
-<meta name="twitter:description" content="准备环境注册GitHub安装Git安装GitHub Desktop安装Node.js  本文涉及到的命令都使用Git Bash操作  本地创建SSH并配置GitHub验证本地是否存在SSH，没有则创建。1$ cd ~/.ssh   目录不存在说明没有SSH  创建SSH1$ ssh-keygen -t rsa -C &quot;xxxxxx@qq.com&quot;   不需要设置文件目录和密码，直接三个回车。xxx">
-<meta name="twitter:image" content="https://github.com/images/pasted-0.png">
+<meta name="twitter:title" content="JS中this的理解">
+<meta name="twitter:description" content="this指向开篇给结论：在 ES5 中 this 永远指向的是最后调用它的那个对象。先给出一个简单的例子： 12345678var obj = &amp;#123;  func () &amp;#123;    console.log(this)  &amp;#125;&amp;#125;var bar = obj.funcbar() // 打印出windowobj.func() // 打印出obj  最后两行打印出来的结果为什">
+<meta name="twitter:image" content="https://github.com/26186/2019/07/26/js-this%20-%20副本/%5Cimages%5Cpasted-8.png%5C">
 
 
 
@@ -143,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/26186/2019/07/24/HexoGitPage/">
+  <link rel="canonical" href="https://github.com/26186/2019/07/26/js-this - 副本/">
 
 
 
 
 
-  <title>GitPage+Hexo搭建个人博客 | 26186个人博客</title>
+  <title>JS中this的理解 | 26186个人博客</title>
   
 
 
@@ -286,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/26186/2019/07/24/HexoGitPage/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/26186/2019/07/26/js-this - 副本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="26186">
@@ -303,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GitPage+Hexo搭建个人博客</h1>
+          <h1 class="post-title" itemprop="name headline">JS中this的理解</h1>
         
 
         <div class="post-meta">
@@ -317,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于&#58;</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T15:51:00+08:00">
-                2019-07-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-26T14:52:00+08:00">
+                2019-07-26
               </time>
             
 
@@ -342,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/环境搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">环境搭建</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -378,7 +372,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  666字
+                  831字
                 </span>
               
 
@@ -394,7 +388,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  3分钟
                 </span>
               
             </div>
@@ -415,84 +409,40 @@
       
 
       
-        <h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><p><a href="https://github.com/">注册GitHub</a><br><a href="https://gitforwindows.org/" target="_blank" rel="noopener">安装Git</a><br><a href="https://desktop.github.com/" target="_blank" rel="noopener">安装GitHub Desktop</a><br><a href="https://nodejs.org/en/" target="_blank" rel="noopener">安装Node.js</a></p>
+        <h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><p>开篇给结论：在 ES5 中 this 永远指向的是最后调用它的那个对象。<br>先给出一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = obj.func</span><br><span class="line">bar() <span class="comment">// 打印出window</span></span><br><span class="line">obj.func() <span class="comment">// 打印出obj</span></span><br></pre></td></tr></table></figure>
+
+<p>最后两行打印出来的结果为什么完全不一样，其实函数调用的本质是 call。</p>
+<h4 id="函数调用的本质"><a href="#函数调用的本质" class="headerlink" title="函数调用的本质"></a>函数调用的本质</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func.call(context)</span><br></pre></td></tr></table></figure>
+
+<p><code>context</code>就是函数调用时的执行上下文（即所在作用域）。谁调用它谁就是它的<code>context</code>，如果 context 是 null 或者是 undefined，context 就是 window。<br><code>bar()</code>等价于<strong>bar.call(undefined)</strong>，为了更好的理解我们先看成是<strong>window.bar.call(window)</strong><br><code>obj.func()</code>等价于<strong>obj.func.call(obj)</strong></p>
 <blockquote>
-<p>本文涉及到的命令都使用Git Bash操作</p>
+<p>综上所述可以粗暴的理解成谁<code>.</code>的它谁就是它的 this。</p>
 </blockquote>
-<h3 id="本地创建SSH并配置GitHub"><a href="#本地创建SSH并配置GitHub" class="headerlink" title="本地创建SSH并配置GitHub"></a>本地创建SSH并配置GitHub</h3><h4 id="验证本地是否存在SSH，没有则创建。"><a href="#验证本地是否存在SSH，没有则创建。" class="headerlink" title="验证本地是否存在SSH，没有则创建。"></a>验证本地是否存在SSH，没有则创建。</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<h3 id="如何改变this指向"><a href="#如何改变this指向" class="headerlink" title="如何改变this指向"></a>如何改变this指向</h3><h4 id="this-this"><a href="#this-this" class="headerlink" title="_this = this"></a>_this = this</h4><p>在一些回调地狱中，最直接的办法就是提前存储 this。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出window</span></span><br><span class="line">      <span class="built_in">console</span>.log(_this) <span class="comment">// 打印出callHell</span></span><br><span class="line">    &#125;</span><br><span class="line">    callback()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func()</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>目录不存在说明没有SSH</p>
+<p>结合之前的结论谁<code>.</code>的它谁就是它的this。<br><code>callback()</code>等价于<code>window.callback.call(window)</code>，所以<code>console.log(this)</code>打印出window。<br><code>callHell.func()</code>等价于<code>callHell.func.call(callHell)</code>，所以<code>var _this = this</code>的值为callHell，打印出callHell。<br>如果对<code>window.callback.call(window)</code>不太理解，其实原因很简单就是js中的var变量提升，可以看下面等价代码：</p>
 </blockquote>
-<h4 id="创建SSH"><a href="#创建SSH" class="headerlink" title="创建SSH"></a>创建SSH</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"xxxxxx@qq.com"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callBack = <span class="function"><span class="keyword">function</span>(<span class="params">_this</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出window</span></span><br><span class="line">  <span class="built_in">console</span>.log(_this) <span class="comment">// 打印出callHell</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func(callback) &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span> </span><br><span class="line">    callback(_this)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func(callBack)</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>不需要设置文件目录和密码，直接三个回车。<br><code>xxxxxx@qq.com</code>替换成GitHub登陆邮箱。</p>
-</blockquote>
-<h4 id="查看拷贝SSH"><a href="#查看拷贝SSH" class="headerlink" title="查看拷贝SSH"></a>查看拷贝SSH</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<h4 id="call、apply、bind"><a href="#call、apply、bind" class="headerlink" title="call、apply、bind"></a>call、apply、bind</h4><p>前面一直在说函数的调用本质就是<code>func.call(context)</code>。所以自然可以使用 call 来改变 this 指向。apply、bind 和 call 是类似的。这三个区别可以自己查的了解下。<br>改造开篇第一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callObj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = obj.func</span><br><span class="line">bar() <span class="comment">// 打印出window</span></span><br><span class="line">bar.call(obj) <span class="comment">// 打印出obj</span></span><br><span class="line">bar.apply(obj) <span class="comment">// 打印出obj</span></span><br><span class="line">bar.bind(obj)() <span class="comment">// 打印出obj</span></span><br><span class="line">obj.func() <span class="comment">// 打印出obj</span></span><br><span class="line">obj.func.call(callObj) <span class="comment">// 打印出callObj</span></span><br><span class="line">obj.func.apply(callObj) <span class="comment">// 打印出callObj</span></span><br><span class="line">obj.func.bind(callObj)() <span class="comment">// 打印出callObj</span></span><br></pre></td></tr></table></figure>
 
+<p>####<br><img src="%5Cimages%5Cpasted-8.png%5C" alt="upload successful">箭头函数<br>先上结论：箭头函数没有 this 绑定，通过查找作用域链来决定 this 指向，如果箭头函数被非箭头函数包含，则 this 指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined 时指向 window。</p>
 <blockquote>
-<p>或者在<code>C:\Users\用户名\.ssh</code>目录下打开id_rsa.pub编辑复制(windows用户)</p>
+<p>ES5 的坑终于在 ES6 中得到解救。</p>
 </blockquote>
-<h4 id="GitHub上配置SSH"><a href="#GitHub上配置SSH" class="headerlink" title="GitHub上配置SSH"></a>GitHub上配置SSH</h4><blockquote>
-<p>GitHub上依次点击 账号下 -&gt; Settings -&gt; SSH and GPG keys -&gt; New SSH key</p>
-</blockquote>
-<p><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h4 id="验证SSH"><a href="#验证SSH" class="headerlink" title="验证SSH"></a>验证SSH</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>改造万恶的回调地狱：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callHell = &#123;</span><br><span class="line">  func() &#123;</span><br><span class="line">    <span class="keyword">var</span> callback = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 打印出callHell</span></span><br><span class="line">    &#125;</span><br><span class="line">    callback()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">callHell.func()</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>成功会出现 Hi xx账号</p>
-</blockquote>
-<h3 id="GitHub博客仓库"><a href="#GitHub博客仓库" class="headerlink" title="GitHub博客仓库"></a>GitHub博客仓库</h3><h4 id="创建GitPage仓库账号-github-io"><a href="#创建GitPage仓库账号-github-io" class="headerlink" title="创建GitPage仓库账号.github.io"></a>创建GitPage仓库<code>账号.github.io</code></h4><blockquote>
-<p><code>账号.github.io</code>名字的仓库默认生成GitPage，<code>账号</code>是GitHub的登录账号。<br>创建完之后在仓库上依次找到 Settings -&gt; GitHub Pages -&gt; Choose a theme -&gt; 提交默认文档页。<br>一个账号下面只能存在一个GitPage。<br>当然也可以自己用其他名字，需要后期配置GitPage。</p>
-</blockquote>
-<p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<blockquote>
-<p>此时博客已经创建完成地址如下：https://账号.github.io/</p>
-</blockquote>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-<h4 id="创建Code分支存放博客原文件"><a href="#创建Code分支存放博客原文件" class="headerlink" title="创建Code分支存放博客原文件"></a>创建Code分支存放博客原文件</h4><blockquote>
-<p>在仓库上依次找到 Settings -&gt; Branches -&gt; 设置Code为默认分支<br>使用GitHub Desktop客户端Clone设置的Code分支仓库</p>
-</blockquote>
-<h3 id="创建Hexo模板博客"><a href="#创建Hexo模板博客" class="headerlink" title="创建Hexo模板博客"></a>创建Hexo模板博客</h3><h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /D/hexo/                 <span class="comment">#选个hexo目录</span></span><br><span class="line">$ npm install -g hexo-cli     <span class="comment">#安装hexo脚手架</span></span><br><span class="line">$ hexo init                   <span class="comment">#hexo初始化</span></span><br></pre></td></tr></table></figure>
+<p>改造开篇第一个例子成 this 为 undefined情况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  func: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func() <span class="comment">// 打印出window</span></span><br></pre></td></tr></table></figure>
 
+<p>结束时结论说三遍：</p>
 <blockquote>
-<p>把Hexo生成的文件拷进本地Code分支仓库。</p>
-</blockquote>
-<h4 id="启动Hexo服务"><a href="#启动Hexo服务" class="headerlink" title="启动Hexo服务"></a>启动Hexo服务</h4><blockquote>
-<p>命令进入本地Code分支仓库。</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install    <span class="comment">#安装依赖包</span></span><br><span class="line">$ hexo g         <span class="comment">#生成静态文件</span></span><br><span class="line">$ hexo s         <span class="comment">#启动服务器，用来本地预览</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Hexo博客预览地址：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-</blockquote>
-<p><img src="/images/pasted-3.png" alt="upload successful"></p>
-<h4 id="Hexo生成的博客页面提交到master分支仓库"><a href="#Hexo生成的博客页面提交到master分支仓库" class="headerlink" title="Hexo生成的博客页面提交到master分支仓库"></a>Hexo生成的博客页面提交到master分支仓库</h4><blockquote>
-<p>hexo g生成的是博客的静态文件，这些文件存放在publish文件夹下<br>配置_config.yml</p>
-</blockquote>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:账号/账号.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save  <span class="comment">#hexo安装git插件</span></span><br><span class="line">$ hexo d                                <span class="comment">#提交到master分支仓库</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>出现异常执行以下命令</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g   <span class="comment">#清理重新编译</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>等几分钟master分支仓库内容就会更新成hexo博客。</p>
-</blockquote>
-<p><img src="/images/pasted-4.png" alt="upload successful"></p>
-<h4 id="本地Code分支仓库提交"><a href="#本地Code分支仓库提交" class="headerlink" title="本地Code分支仓库提交"></a>本地Code分支仓库提交</h4><blockquote>
-<p>使用GitHub Desktop客户端把博客的原文件提交到Code分支</p>
-</blockquote>
-<p><img src="/images/pasted-5.png" alt="upload successful"></p>
-<h3 id="搭建博客管理后台环境"><a href="#搭建博客管理后台环境" class="headerlink" title="搭建博客管理后台环境"></a>搭建博客管理后台环境</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-admin</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-6.png" alt="upload successful"></p>
-<blockquote>
-<p>管理地址：<a href="http://localhost:4000/admin/#/" target="_blank" rel="noopener">http://localhost:4000/admin/#/</a><br>友好支持MarkDown语法，此篇文章使用hexo-admin写作完成。<br>图片直接复制粘贴，windows用户注意图片路劲<code>\</code>改成<code>/</code>。<br>推荐几个MarkDown语在线编辑器 <a href="https://pandao.github.io/editor.md/" target="_blank" rel="noopener">editor.md</a> <a href="https://dillinger.io/" target="_blank" rel="noopener">dillinger</a> <a href="https://www.mdeditor.com/" target="_blank" rel="noopener">mdeditor</a></p>
+<p>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。<br>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。<br>在ES5中 this 永远指向最后调用它的那个对象；在ES6中 this 永远指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined时指向 window。</p>
 </blockquote>
 
       
@@ -535,9 +485,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/GitPage/" rel="tag"><i class="fa fa-tag"></i> GitPage</a>
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
           
         </div>
       
@@ -565,13 +515,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/24/HexoGitPage/" rel="next" title="GitPage+Hexo搭建个人博客">
+                <i class="fa fa-chevron-left"></i> GitPage+Hexo搭建个人博客
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/26/js-this - 副本/" rel="prev" title="JS中this的理解">
+              <a href="/2019/07/26/js-this/" rel="prev" title="JS中this的理解">
                 JS中this的理解 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -715,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备环境"><span class="nav-number">1.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地创建SSH并配置GitHub"><span class="nav-number">2.</span> <span class="nav-text">本地创建SSH并配置GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证本地是否存在SSH，没有则创建。"><span class="nav-number">2.1.</span> <span class="nav-text">验证本地是否存在SSH，没有则创建。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建SSH"><span class="nav-number">2.2.</span> <span class="nav-text">创建SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看拷贝SSH"><span class="nav-number">2.3.</span> <span class="nav-text">查看拷贝SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GitHub上配置SSH"><span class="nav-number">2.4.</span> <span class="nav-text">GitHub上配置SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证SSH"><span class="nav-number">2.5.</span> <span class="nav-text">验证SSH</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub博客仓库"><span class="nav-number">3.</span> <span class="nav-text">GitHub博客仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建GitPage仓库账号-github-io"><span class="nav-number">3.1.</span> <span class="nav-text">创建GitPage仓库账号.github.io</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Code分支存放博客原文件"><span class="nav-number">3.2.</span> <span class="nav-text">创建Code分支存放博客原文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Hexo模板博客"><span class="nav-number">4.</span> <span class="nav-text">创建Hexo模板博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动Hexo服务"><span class="nav-number">4.2.</span> <span class="nav-text">启动Hexo服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo生成的博客页面提交到master分支仓库"><span class="nav-number">4.3.</span> <span class="nav-text">Hexo生成的博客页面提交到master分支仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地Code分支仓库提交"><span class="nav-number">4.4.</span> <span class="nav-text">本地Code分支仓库提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建博客管理后台环境"><span class="nav-number">5.</span> <span class="nav-text">搭建博客管理后台环境</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#this指向"><span class="nav-number">1.</span> <span class="nav-text">this指向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用的本质"><span class="nav-number">1.1.</span> <span class="nav-text">函数调用的本质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何改变this指向"><span class="nav-number">2.</span> <span class="nav-text">如何改变this指向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this-this"><span class="nav-number">2.1.</span> <span class="nav-text">_this = this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call、apply、bind"><span class="nav-number">2.2.</span> <span class="nav-text">call、apply、bind</span></a></li></ol></li></ol></div>
             
 
           </div>
