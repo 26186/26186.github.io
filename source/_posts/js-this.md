@@ -50,6 +50,7 @@ callHell.func()
 > `callback()`等价于`window.callback.call(window)`，所以`console.log(this)`打印出window。
 > `callHell.func()`等价于`callHell.func.call(callHell)`，所以`var _this = this`的值为callHell，打印出callHell。
 如果对`window.callback.call(window)`不太理解，其实原因很简单就是js中的var变量提升，可以看下面等价代码：
+
 ```javascript
 var callBack = function(_this) {
   console.log(this) // 打印出window
@@ -83,10 +84,9 @@ obj.func.call(callObj) // 打印出callObj
 obj.func.apply(callObj) // 打印出callObj
 obj.func.bind(callObj)() // 打印出callObj
 ```
-#### 
-![upload successful](\\images\pasted-8.png\)箭头函数
+#### 箭头函数
 先上结论：箭头函数没有 this 绑定，通过查找作用域链来决定 this 指向，如果箭头函数被非箭头函数包含，则 this 指向最近一层调用非箭头函数的那个对象，否则 this 为 undefined，undefined 时指向 window。
- > ES5 的坑终于在 ES6 中得到解救。
+> ES5 的坑终于在 ES6 中得到解救。
  
 改造万恶的回调地狱：
 ```javascript
