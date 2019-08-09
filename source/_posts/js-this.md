@@ -47,23 +47,8 @@ var callHell = {
 callHell.func()
 ```
 > 结合之前的结论谁`.`的它谁就是它的this。
-> `callback()`等价于`window.callback.call(window)`，所以`console.log(this)`打印出window。
+> `callback()`等价于`callback.call()`，此时`context`为 undefined，所以`console.log(this)`打印出window。
 > `callHell.func()`等价于`callHell.func.call(callHell)`，所以`var _this = this`的值为callHell，打印出callHell。
-如果对`window.callback.call(window)`不太理解，其实原因很简单就是js中的var变量提升，可以看下面等价代码：
-
-```javascript
-var callBack = function(_this) {
-  console.log(this) // 打印出window
-  console.log(_this) // 打印出callHell
-}
-var callHell = {
-  func(callback) {
-    var _this = this 
-    callback(_this)
-  }
-}
-callHell.func(callBack)
-```
 #### call、apply、bind
 前面一直在说函数的调用本质就是`func.call(context)`。所以自然可以使用 call 来改变 this 指向。apply、bind 和 call 是类似的。这三个区别可以自己查的了解下。
 改造开篇第一个例子：
